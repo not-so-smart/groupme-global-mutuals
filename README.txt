@@ -2,7 +2,7 @@ GROUP MEMBERS:
 Peter Currie (yeah)
 Shenabeth Jenkins(sjenki69)
 Cody Li (cli12316)
-Amin Nazemzadeh (directory ID)
+Amin Nazemzadeh (aminnz)
 
 
 APP DESCRIPTION:
