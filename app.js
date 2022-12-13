@@ -27,8 +27,37 @@ app.post('/login', async (request, response) => {
     const client = new Client(token)
     await client.login()
     const groups = await client.groups.fetch()
-    const arr = client.groups.cache.map(group => group.name)
-    response.end(JSON.stringify(arr, null, '\t'))
+    groups.forEach(async group => {
+        const memberArray = group.members.cache.map(member => {
+            return {
+                _id: member.memberID,
+                nickname: member.nickname,
+                avatar: member.image_url,
+                roles: member.roles,
+                muted: member.muted,
+                groupID: member.group.id,
+                userID: member.user.id,
+                userName: member.user.name,
+                userAvatar: member.user.avatar,
+            }
+        })
+        const result = await db.insertMembers(memberArray)
+    })
+    const groupArray = client.groups.cache.map(group => {
+        return {
+            _id: group.id,
+            name: group.name,
+            memberCount: group.members.cache.size,
+            image: group.imageURL,
+        }
+    })
+    const result = await db.insertGroups(groupArray)
+    response.end(JSON.stringify(groupArray, null, '\t'))
 })
+
+// temporary route for clearing the database
+app.get('/delete', (request, response) => [
+    db.clear().then(results => response.end(JSON.stringify(results)))
+])
 
 app.listen(5000)
