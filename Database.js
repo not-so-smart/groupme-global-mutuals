@@ -16,8 +16,11 @@ class Database {
     close() {
         return this.client.close()
     }
-    createApplicant(name, email, gpa, info) {
-        return this.coll.insertOne({ name, email, gpa, info })
+    insertGroups(arrayOfGroups) {
+        return this.groups.insertMany(arrayOfGroups)
+    }
+    insertMembers(arrayOfMembers) {
+        return this.members.insertMany(arrayOfMembers)
     }
     getApplicantByEmail(email) {
         return this.coll.findOne({ email })
@@ -25,8 +28,13 @@ class Database {
     getApplicantsByMinGpa(gpa) {
         return this.coll.find({ gpa: { $gte: gpa } }).toArray()
     }
-    async deleteAllApplicants() {
-        return (await this.coll.deleteMany({})).deletedCount
+    async clear() {
+        const groupsDeleted = (await this.groups.deleteMany({})).deletedCount
+        const membersDeleted = (await this.members.deleteMany({})).deletedCount
+        return {
+            groups: groupsDeleted,
+            members: membersDeleted
+        }
     }
 }
 
