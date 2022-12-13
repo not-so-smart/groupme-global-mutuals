@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GroupMe Mutual Member Finder</title>
-</head>
-<body>
-    <h1>Log In to GroupMe</h1>
-    <br><br><br><br>
-    <form method="post" action="/login">
-        <p>GroupMe Token: </p> <input type="text" id="token" name="token"><br>
-        <input type="submit" value="Log In">
-    </form>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <title>GroupMe Mutual Member Finder</title>
+    </head>
+    <body>
+        <fieldset>
+            <h1>Log In to GroupMe</h1>
+            <div id="loginBorder">
+                <form method="post" action="/login">
+                    GroupMe Token:
+                    <input type="text" id="token" name="token" /><br/><br>
+                    <input type="submit" value="Log In" id="login" name="login" /><br><br>
+                </form>
+
+                <!-- Explain how to get token -->
+                <p>
+                    <strong> How to get your GroupMe token:</strong><br><br>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp<strong>1.</strong> &nbsp<br><br>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp<strong>2.</strong> &nbsp<br><br>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp<strong>3.</strong> &nbspCopy and paste the token into the box above.
+                </p>
+            </div>
+        </fieldset>
+    </body>
 </html>

@@ -3,8 +3,45 @@ body {
     font-family: sans-serif;
 }
 
-h1 {
-    color: black;
+h1,
+h4 {
+    color: rgb(48, 48, 48);
     text-align: center;
 }
 
+p {
+    font-size: 0.75rem;
+    color: rgb(48, 48, 48);
+    text-align: left;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+fieldset {
+    margin: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 2rem;
+    border: rgb(48, 48, 48);
+    border-width: 1rem;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.292);
+    background-color: white;
+}
+
+div#groupBorder {
+    text-align: center;
+}
+
+div#loginBorder {
+    text-align: center;
+}
+
+.form-submit-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }

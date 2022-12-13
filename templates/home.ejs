@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GroupMe Mutual Member Finder</title>
-</head>
-<body>
-    <h1>Compare Groups</h1>
-    <br><br><br><br>
-    <a href="/login">Click here to enter your token and fetch groups</a>
-    <form method="post" action="/compare">
-        <p>Group 1: </p> 
-        <!-- add dropdown menu for group 1 -->
-        <p>Group 2: </p> <input type="text" id="password" name="password"><br>
-        <!-- add dropdown menu for group 1 -->        
-    </form>
-    
-    <!-- populate webpage with mutual members in both group 1 and 2 -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <title>GroupMe Mutual Member Finder</title>
+    </head>
+    <body>
+        <fieldset>
+            <h1>Compare Groups for Mutual Members</h1>
+            <h4>
+                <a href="/login"
+                    >Click here to enter your token and fetch groups</a
+                >
+            </h4>
+            <br /><br />
+            <form method="post" action="/compare">
+                <div id="groupBorder">
+                    <!-- add dropdown menu for group 1 -->
+                    Group 1:
+                    <input list="group1-options" name="group1-choice" required />
+                    <datalist id="group1-options">
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                    </datalist>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-</body>
+                    <!-- add dropdown menu for group 1 -->
+                    Group 2:
+                    <input list="group2-options" name="group2-choice" required />
+                    <datalist id="group2-options">
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                    </datalist>
+
+                    <!-- submit button -->
+                    <br><br>
+                    <input type="submit" value="Submit Group Choices" />
+                    
+                    <!-- <br><br><hr><br><br> -->
+                </div>
+            </form>
+        </fieldset>
+    </body>
 </html>
