@@ -17,6 +17,14 @@ p {
     margin-right: 5rem;
 }
 
+ol,li {
+    font-size: small;
+    color: rgb(48, 48, 48);
+    text-align: left;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+
 fieldset {
     margin: 2rem;
     padding-bottom: 2rem;
