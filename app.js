@@ -52,12 +52,12 @@ app.post('/login', async (request, response) => {
         }
     })
     const result = await db.insertGroups(groupArray)
-    response.end(JSON.stringify(groupArray, null, '\t'))
+    // response.end(JSON.stringify(groupArray, null, '\t'))
+    response.render('success')
 })
 
-// temporary route for clearing the database
-app.get('/delete', (request, response) => [
+app.post('/delete', (request, response) =>
     db.clear().then(results => response.end(JSON.stringify(results)))
-])
+)
 
 app.listen(5000)
