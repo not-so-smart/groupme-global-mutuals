@@ -51,37 +51,42 @@ app.get('/login', (request, response) => {
 })
 
 app.post('/login', async (request, response) => {
-    const { token } = request.body
-    const client = new Client(token)
-    await client.login()
-    const groups = await client.groups.fetch()
-    groups.forEach(async group => {
-        const memberArray = group.members.cache.map(member => {
+    try {
+        await db.clear()
+        const { token } = request.body
+        const client = new Client(token)
+        await client.login()
+        const groups = await client.groups.fetch()
+        groups.forEach(async group => {
+            const memberArray = group.members.cache.map(member => {
+                return {
+                    _id: member.memberID,
+                    nickname: member.nickname,
+                    avatar: member.image_url,
+                    roles: member.roles,
+                    muted: member.muted,
+                    groupID: member.group.id,
+                    userID: member.user.id,
+                    userName: member.user.name,
+                    userAvatar: member.user.avatar,
+                }
+            })
+            await db.insertMembers(memberArray)
+        })
+        const groupArray = client.groups.cache.map(group => {
             return {
-                _id: member.memberID,
-                nickname: member.nickname,
-                avatar: member.image_url,
-                roles: member.roles,
-                muted: member.muted,
-                groupID: member.group.id,
-                userID: member.user.id,
-                userName: member.user.name,
-                userAvatar: member.user.avatar,
+                _id: group.id,
+                name: group.name,
+                memberCount: group.members.cache.size,
+                image: group.imageURL,
             }
         })
-        const result = await db.insertMembers(memberArray)
-    })
-    const groupArray = client.groups.cache.map(group => {
-        return {
-            _id: group.id,
-            name: group.name,
-            memberCount: group.members.cache.size,
-            image: group.imageURL,
-        }
-    })
-    const result = await db.insertGroups(groupArray)
-    response.end(JSON.stringify(groupArray, null, '\t'))
-    // response.render('success')
+        await db.insertGroups(groupArray)
+        // response.end(JSON.stringify(groupArray, null, '\t'))
+        response.render('loginSuccess')
+    } catch (e) {
+        response.render('loginUnsuccessful')
+    }
 })
 
 // work-in-progress deletion endpoint
