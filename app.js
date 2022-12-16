@@ -5,7 +5,6 @@ const Database = require('./Database');
 const { Client } = require('node-groupme')
 
 const db = new Database();
-db.connect();
 
 const app = express();
 app.set('views', path.resolve(__dirname, 'templates'));
@@ -103,4 +102,4 @@ app.get('/test', async (request, response) => {
     response.end(JSON.stringify(result, null, '\t'))
 })
 
-app.listen(5000)
+db.connect().then(() => app.listen(5000));
