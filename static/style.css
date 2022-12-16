@@ -42,7 +42,7 @@ div#groupBorder {
 
 .button {
     display: inline-block;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     border-width: .15rem;
     border-color: rgb(74, 132, 240);
     border-radius: 1rem;
