@@ -28,6 +28,8 @@ li {
 
 fieldset {
     margin: 5rem;
+    margin-left: 8rem;
+    margin-right: 8rem;
     padding-bottom: 2rem;
     border-radius: 2rem;
     border: rgb(48, 48, 48);
