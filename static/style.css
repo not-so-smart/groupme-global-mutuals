@@ -56,12 +56,22 @@ div#loginBorder {
 }
 
 .button {
-    background-color: #4caf50;
-    border: none;
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    border-radius: 1rem;
+    border: 10rem;
+    border-color: rgb(48, 48, 48);
+    background-color: cornflowerblue;
     color: white;
-    padding: 15px 32px;
+    margin: 0 0.1em 0.1em 0;
+    padding: .5rem 1rem;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    transition: all 0.1s;
+}
+
+button:hover{
+    background-color: rgb(153, 187, 252);
+
 }
