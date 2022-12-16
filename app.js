@@ -14,8 +14,36 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('static'));
 
-app.get('/', (request, response) => {
-    response.render('home')
+app.get('/', async (request, response) => {
+    let table = 'Please load some data first.'
+    const { group1, group2 } = request.query
+    if (!(group1 && group2)) {
+        return response.render('home', { table })
+    }
+
+    const members1 = await db.getMembersFromGroup(group1)
+    const members2 = await db.getMembersFromGroup(group2)
+
+    const results = []
+    members1.forEach(member1 => {
+        const member2 = members2.find(member2 => member1.userID == member2.userID)
+        if (member2) results.push({
+            user: {
+                id: member1.userID,
+                name: member1.userName,
+                avatar: member1.userAvatar || 'https://cdn.groupme.com/assets/avatars/default-user.large.png?version=7.4.2-20221129.2'
+            },
+            member1, member2
+        })
+    })
+    // response.end(JSON.stringify(results, null, '\t'))
+
+    table = '<table border="1"><tr><th>ID</th><th>Name</th><th>Avatar</th></tr>' +
+        results
+            .map(result => `<tr><td>${result.user.id}</td><td>${result.user.name}</td><td><img src="${result.user.avatar}" height="100" width="100"></td></tr>`)
+            .join('\n')
+        + '</table>'
+    response.render('home', { table })
 })
 
 app.get('/login', (request, response) => {
@@ -52,12 +80,19 @@ app.post('/login', async (request, response) => {
         }
     })
     const result = await db.insertGroups(groupArray)
-    // response.end(JSON.stringify(groupArray, null, '\t'))
-    response.render('success')
+    response.end(JSON.stringify(groupArray, null, '\t'))
+    // response.render('success')
 })
 
+// work-in-progress deletion endpoint
 app.post('/delete', (request, response) =>
     db.clear().then(results => response.end(JSON.stringify(results)))
 )
+
+// temporary testing endpoint
+app.get('/test', async (request, response) => {
+    const result = await db.findMutualMembers('59394515', '53263097')
+    response.end(JSON.stringify(result, null, '\t'))
+})
 
 app.listen(5000)
