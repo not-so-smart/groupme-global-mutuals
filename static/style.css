@@ -13,8 +13,6 @@ p {
     font-size: 0.75rem;
     color: rgb(48, 48, 48);
     text-align: left;
-    margin-left: 20rem;
-    margin-right: 20rem;
 }
 
 ol,
@@ -22,8 +20,6 @@ li {
     font-size: small;
     color: rgb(48, 48, 48);
     text-align: left;
-    margin-left: 10rem;
-    margin-right: 10rem;
 }
 
 fieldset {
@@ -38,29 +34,41 @@ fieldset {
     background-color: white;
 }
 
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 50rem;
+}
+
 div#groupBorder {
     text-align: center;
+}
+
+div#listBorder {
+    margin-left: 10rem;
+    margin-right: 10rem;
 }
 
 .button {
     display: inline-block;
     font-family: "Roboto", sans-serif;
-    border-width: .15rem;
+    border-width: 0.15rem;
     border-color: rgb(74, 132, 240);
     border-radius: 1rem;
     background-color: cornflowerblue;
     color: white;
-    font-size: .85rem;
+    font-size: 0.85rem;
     margin: 0 0.1em 0.1em 0;
-    margin-top: .5rem;
-    padding: .25rem .75rem;
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.75rem;
     text-align: center;
     text-decoration: none;
-    text-shadow: .07em 0.07em 0.1em rgba(0, 0, 0, 0.6);
+    text-shadow: 0.07em 0.07em 0.1em rgba(0, 0, 0, 0.6);
 }
 
 .button:hover {
     border-color: rgba(74, 132, 240, 0.8);
     background-color: rgba(100, 148, 237, 0.8);
-    text-shadow: .07em 0.07em 0.1em rgba(0, 0, 0, 0.6);
+    text-shadow: 0.07em 0.07em 0.1em rgba(0, 0, 0, 0.6);
 }
