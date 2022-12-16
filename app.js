@@ -16,9 +16,11 @@ app.use(express.static('static'));
 
 app.get('/', async (request, response) => {
     let table = 'Please load some data first.'
+    const groups = await db.getGroupsList()
+    const options = groups.map(group => `<option value="${group._id}">${group.name}</option>`)
     const { group1, group2 } = request.query
     if (!(group1 && group2)) {
-        return response.render('home', { table })
+        return response.render('home', { table, options })
     }
 
     const members1 = await db.getMembersFromGroup(group1)
@@ -43,7 +45,7 @@ app.get('/', async (request, response) => {
             .map(result => `<tr><td>${result.user.id}</td><td>${result.user.name}</td><td><img src="${result.user.avatar}" height="100" width="100"></td></tr>`)
             .join('\n')
         + '</table>'
-    response.render('home', { table })
+    response.render('home', { table, options })
 })
 
 app.get('/login', (request, response) => {

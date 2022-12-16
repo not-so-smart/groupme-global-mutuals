@@ -17,21 +17,19 @@
         </h4>
         <br /><br />
         <div id="groupBorder">
-            <form method="post" action="/compare">
+            <form method="get" action="/">
                 <!-- add dropdown menu for group 1 -->
                 Group 1:
-                <input list="group1-options" name="group1-choice" required />
+                <input list="group1-options" name="group1" required />
                 <datalist id="group1-options">
-                    <option value="1"></option>
                     <%- options %>
                 </datalist>
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
                 <!-- add dropdown menu for group 1 -->
                 Group 2:
-                <input list="group2-options" name="group2-choice" required />
+                <input list="group2-options" name="group2" required />
                 <datalist id="group2-options">
-                    <option value="1"></option>
                     <%- options %>
                 </datalist>
 
