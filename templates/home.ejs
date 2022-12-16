@@ -16,8 +16,8 @@
                 >
             </h4>
             <br /><br />
+            <div id="groupBorder">
             <form method="post" action="/compare">
-                <div id="groupBorder">
                     <!-- add dropdown menu for group 1 -->
                     Group 1:
                     <input list="group1-options" name="group1-choice" required />
@@ -40,15 +40,20 @@
                     <!-- submit button -->
                     <br><br>
                     <input type="submit" class="button" value="Submit Group Choices" />
-                    
-                    <!-- <br><br><hr><br><br> -->
-                </div>
-            </form>
+                </form>
+            
+
+
+            <!-- add the table of members here -->
+            
+
 
             <!-- delete data from database -->
             <form method="post" action="/delete">
-                <input type="submit" value="Delete Data" />
+                <input type="submit" class="button" value="Delete Data" />
             </form>
+            </div>
+
         </fieldset>
     </body>
 </html>

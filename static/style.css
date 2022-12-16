@@ -27,7 +27,7 @@ li {
 }
 
 fieldset {
-    margin: 2rem;
+    margin: 4rem;
     padding-bottom: 2rem;
     border-radius: 2rem;
     border: rgb(48, 48, 48);
@@ -40,39 +40,25 @@ div#groupBorder {
     text-align: center;
 }
 
-div#loginBorder {
-    text-align: center;
-}
-
-.form-submit-button {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
 .button {
     display: inline-block;
-    font-family: "Roboto", sans-serif;
-    border: 1rem;
-    border-width: 1rem;
-    border-color: rgb(48, 48, 48);
+    font-family: "Roboto";
+    border-width: .15rem;
+    border-color: rgb(74, 132, 240);
     border-radius: 1rem;
     background-color: cornflowerblue;
     color: white;
+    font-size: .85rem;
     margin: 0 0.1em 0.1em 0;
-    padding: .5rem 1rem;
+    margin-top: .5rem;
+    padding: .25rem .75rem;
     text-align: center;
     text-decoration: none;
-    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-
+    text-shadow: .07em 0.07em 0.1em rgba(0, 0, 0, 0.6);
 }
 
-.button:hover{
-    background-color: rgb(153, 187, 252);
-    
+.button:hover {
+    border-color: rgba(74, 132, 240, 0.8);
+    background-color: rgba(100, 148, 237, 0.8);
+    text-shadow: .07em 0.07em 0.1em rgba(0, 0, 0, 0.6);
 }
