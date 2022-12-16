@@ -28,6 +28,24 @@ class Database {
     getApplicantsByMinGpa(gpa) {
         return this.coll.find({ gpa: { $gte: gpa } }).toArray()
     }
+
+    /*
+    Assuming groupid attribute is an array?
+
+        db.find({
+            $and: [
+                {
+                    groupID : group1
+                },
+                {
+                    groupID : group2
+                }
+            ]
+        })
+    */
+    compareMembers(group1, group2) {
+        return this.coll.find({$and: [ { groupID: group1 } , { groupID: group2 } ]});
+    }
     async clear() {
         const groupsDeleted = (await this.groups.deleteMany({})).deletedCount
         const membersDeleted = (await this.members.deleteMany({})).deletedCount
