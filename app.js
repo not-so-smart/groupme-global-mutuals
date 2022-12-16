@@ -85,9 +85,10 @@ app.post('/login', async (request, response) => {
 })
 
 // work-in-progress deletion endpoint
-app.post('/delete', (request, response) =>
-    db.clear().then(results => response.end(JSON.stringify(results)))
-)
+app.post('/delete', async (request, response) => {
+    const results = await db.clear()
+    response.render('deleteSuccess', results)
+})
 
 // temporary testing endpoint
 app.get('/test', async (request, response) => {
