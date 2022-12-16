@@ -90,16 +90,9 @@ app.post('/login', async (request, response) => {
     }
 })
 
-// work-in-progress deletion endpoint
 app.post('/delete', async (request, response) => {
     const results = await db.clear()
     response.render('deleteSuccess', results)
-})
-
-// temporary testing endpoint
-app.get('/test', async (request, response) => {
-    const result = await db.findMutualMembers('59394515', '53263097')
-    response.end(JSON.stringify(result, null, '\t'))
 })
 
 db.connect().then(() => app.listen(5000));
