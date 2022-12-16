@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <title>GroupMe Mutual Member Finder</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css" />
-    <title>GroupMe Mutual Member Finder</title>
-</head>
-
-<body>
-    <fieldset>
-        <h1>Deletion Was Successful</h1>
-        <h3>Your data has been deleted.</h3>
-        
-        <p>Number of groups deleted: <%- groups %></p> <br>
-        <p>Number of users deleted: <%- members %></p> <br>
-        <a href="/" class="button">Continue</a>
-    </fieldset>
-</body>
-
+    <body>
+        <fieldset>
+            <h1>Deletion Was Successful</h1>
+            <div id="groupBorder">
+                <h3>Your data has been deleted.</h3>
+                Number of groups deleted: <%- groups %>
+                <br />
+                Number of users deleted: <%- members %>
+                <br />
+                <br />
+                <a href="/" class="button">Continue</a>
+            </div>
+        </fieldset>
+    </body>
 </html>
