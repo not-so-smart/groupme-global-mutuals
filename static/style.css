@@ -41,6 +41,33 @@ img#instructions {
     width: 50rem;
 }
 
+/* table,td,th {
+    border: 1px solid rgb(48, 48, 48);
+    border-collapse: collapse;
+    padding: .5rem;
+    margin: 0 auto;
+} */
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+th {
+    padding: .5rem;
+    font-size: medium;
+}
+
+div#tableBorder {
+    align-self: center;
+}
+
 div#groupBorder {
     text-align: center;
 }

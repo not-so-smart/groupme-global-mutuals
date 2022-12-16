@@ -39,7 +39,7 @@ app.get('/', async (request, response) => {
     })
     // response.end(JSON.stringify(results, null, '\t'))
 
-    table = '<table border="1"><tr><th>ID</th><th>Name</th><th>Avatar</th></tr>' +
+    table = '<table><tr><th>ID</th><th>Name</th><th>Avatar</th></tr>' +
         results
             .map(result => `<tr><td>${result.user.id}</td><td>${result.user.name}</td><td><img src="${result.user.avatar}" height="100" width="100"></td></tr>`)
             .join('\n')
