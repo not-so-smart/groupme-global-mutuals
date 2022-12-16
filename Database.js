@@ -22,11 +22,50 @@ class Database {
     insertMembers(arrayOfMembers) {
         return this.members.insertMany(arrayOfMembers)
     }
+    getMembersFromGroup(groupID) {
+        return this.members.find({ groupID }).toArray()
+    }
     getApplicantByEmail(email) {
         return this.coll.findOne({ email })
     }
-    getApplicantsByMinGpa(gpa) {
-        return this.coll.find({ gpa: { $gte: gpa } }).toArray()
+    findMutualMembers(group1, group2) {
+        return this.members.aggregate([
+            {
+                $match: {
+                    $or: [
+                        {
+                            groupID: group1
+                        },
+                        {
+                            groupID: group2
+                        }
+                    ]
+                }
+            },
+            {
+                $group: {
+                    _id: {
+                        'uID': '$userID',
+                        'uName': '$userName',
+                        'uAvatar': '$userAvatar'
+                    },
+                    groupCount: { $sum: 1 }
+                }
+            },
+            {
+                $match: {
+                    groupCount: 2
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    userID: '$_id.uID',
+                    userName: '$_id.uName',
+                    userAvatar: '$_id.uAvatar'
+                }
+            }
+        ]).toArray()
     }
 
     /*
@@ -44,7 +83,7 @@ class Database {
         })
     */
     compareMembers(group1, group2) {
-        return this.coll.find({$and: [ { groupID: group1 } , { groupID: group2 } ]});
+        return this.coll.find({ $and: [{ groupID: group1 }, { groupID: group2 }] });
     }
     async clear() {
         const groupsDeleted = (await this.groups.deleteMany({})).deletedCount
